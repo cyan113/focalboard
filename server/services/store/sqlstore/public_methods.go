@@ -16,8 +16,6 @@ import (
 	"context"
 	"time"
 
-	mmmodel "github.com/mattermost/mattermost-server/v6/model"
-
 	"github.com/mattermost/focalboard/server/model"
 
 	mmModel "github.com/mattermost/mattermost-server/v6/model"
@@ -356,13 +354,14 @@ func (s *SQLStore) GetCategory(id string) (*model.Category, error) {
 
 }
 
-//nolint:typecheck
-func (s *SQLStore) GetFileInfo(id string) (*mmmodel.FileInfo, error) {
+func (s *SQLStore) GetFileInfo(id string) (*mmModel.FileInfo, error) {
 	return s.getFileInfo(s.db, id)
+
 }
 
 func (s *SQLStore) GetLicense() *mmModel.License {
 	return s.getLicense(s.db)
+
 }
 
 func (s *SQLStore) GetMemberForBoard(boardID string, userID string) (*model.BoardMember, error) {
@@ -697,6 +696,11 @@ func (s *SQLStore) RunDataRetention(globalRetentionDate int64, batchSize int64) 
 
 }
 
+func (s *SQLStore) SaveFileInfo(fileInfo *mmModel.FileInfo) error {
+	return s.saveFileInfo(s.db, fileInfo)
+
+}
+
 func (s *SQLStore) SaveMember(bm *model.BoardMember) (*model.BoardMember, error) {
 	return s.saveMember(s.db, bm)
 
@@ -709,12 +713,6 @@ func (s *SQLStore) SearchBoardsForUser(term string, userID string) ([]*model.Boa
 
 func (s *SQLStore) SearchUsersByTeam(teamID string, searchQuery string) ([]*model.User, error) {
 	return s.searchUsersByTeam(s.db, teamID, searchQuery)
-
-}
-
-//nolint:typecheck
-func (s *SQLStore) SaveFileInfo(fileInfo *mmmodel.FileInfo) error {
-	return s.saveFileInfo(s.db, fileInfo)
 
 }
 
