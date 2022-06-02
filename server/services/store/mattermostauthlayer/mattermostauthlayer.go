@@ -3,9 +3,10 @@ package mattermostauthlayer
 import (
 	"database/sql"
 	"encoding/json"
+	"net/http"
+
 	mmModel "github.com/mattermost/mattermost-server/v6/model"
 	"github.com/mattermost/mattermost-server/v6/plugin"
-	"net/http"
 
 	sq "github.com/Masterminds/squirrel"
 
