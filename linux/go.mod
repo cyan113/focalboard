@@ -4,6 +4,8 @@ go 1.16
 
 replace github.com/mattermost/focalboard/server => ../server
 
+replace github.com/mattermost/mattermost-server/v6 => github.com/mattermost/mattermost-server/v6 v6.0.0-20220601144141-e54977931ccd
+
 require (
 	github.com/google/uuid v1.3.0
 	github.com/mattermost/focalboard/server v0.0.0-00010101000000-000000000000
